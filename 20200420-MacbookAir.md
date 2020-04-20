@@ -2,7 +2,7 @@
 
 ## Homebrew
 
-'''shell
+```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew tap caskroom/cask
 
@@ -42,44 +42,45 @@ brew cask install visual-studio-code
 brew cask install cd-to-iterm
 
 brew cask upgrade
-'''
+```
 
 ## Google Add-on
-ato-ichinen
-AutoPagerize
-Back to Back
-Create Link
-Flash Video Downloader
-HTTPS Everywhere
-Keepa - Amazon Price Tracker
-LastPass: Free Password Manager
-OneClick Cleaner for Chrome
-OneTab
-Peek-a-tab, Tabs Manager for Google Chrome™
-PrintWhatYouLike
-Save to Pocket
-Simplify Gmail
-Tampermonkey
-Vue.js devtools
-Wappalyzer
-その本、図書館にあります。
-アマゾン注文履歴フィルタ
-ストリームレコーダー
-自動価格比較／ショッピング検索（Auto Price Checker）
+
+* ato-ichinen
+* AutoPagerize
+* Back to Back
+* Create Link
+* Flash Video Downloader
+* HTTPS Everywhere
+* Keepa - Amazon Price Tracker
+* LastPass: Free Password Manager
+* OneClick Cleaner for Chrome
+* OneTab
+* Peek-a-tab, Tabs Manager for Google Chrome™
+* PrintWhatYouLike
+* Save to Pocket
+* Simplify Gmail
+* Tampermonkey
+* Vue.js devtools
+* Wappalyzer
+* その本、図書館にあります。
+* アマゾン注文履歴フィルタ
+* ストリームレコーダー
+* 自動価格比較／ショッピング検索（Auto Price Checker）
 
 ## Firefox
 
-Download Star
-Keepa - Amazon Price Tracker
-LastPass: Free Password Manager
-Sea Containers
-Simplify Gmail
-Tampermonkey
-Tile Pages WE
+* Download Star
+* Keepa - Amazon Price Tracker
+* LastPass: Free Password Manager
+* Sea Containers
+* Simplify Gmail
+* Tampermonkey
+* Tile Pages WE
 
 ## Visual Studio Code
 
 https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
 https://qiita.com/tomokei5634/items/22128efe306ce9bc5682
 
-Settings Sync
+* Settings Sync
