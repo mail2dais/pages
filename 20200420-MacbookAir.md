@@ -35,6 +35,7 @@ brew cask install seashore
 brew cask install simple-comic
 brew cask install skitch
 brew cask install spotify
+brew cask install typora
 brew cask install whatsapp
 brew cask install the-unarchiver
 brew cask install visual-studio-code
