@@ -80,7 +80,5 @@ brew cask upgrade
 
 ## Visual Studio Code
 
-https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
-https://qiita.com/tomokei5634/items/22128efe306ce9bc5682
-
-* Settings Sync
+* [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+  * https://qiita.com/tomokei5634/items/22128efe306ce9bc5682
