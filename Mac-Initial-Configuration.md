@@ -1,4 +1,52 @@
-# 既存のMacbook Proの設定
+# Macの初期設定
+
+## 最初にやること
+
+* ソフトウェア・アップデート
+
+## ターミナル設定
+
+* 設定画面から
+  * プロファイルは、Proをベースに複製する
+  * テキストはアンチエイリアス処理をチェックする
+  * フォントはMonaco
+
+## シェル設定
+
+* bashに切り替え
+
+```shell
+$ chsh -s /bin/bash
+```
+
+「デフォルトのシェルはzshにしろ」とメッセージが出るが、これを消すには「~/.bash_profile」に追記する。
+
+```shell
+$ echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ~/.bash_profile
+```
+
+## 隠しファイルを表示する
+
+```shell
+$ defaults write com.apple.finder AppleShowAllFiles -boolean true
+```
+
+## 共有フォルダで.DS_Storeを作成しない
+
+```shell
+$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+```
+
+## 権限設定
+
+Homebrewでインストールする際に、/user/localのパーミッションエラーが発生することがある。
+追加されたユーザーでHomebrewを実行する時などにパーミッションエラーが起きるので、予め権限設定する。
+
+## Xcode Command Line Tools
+
+```shell
+$ xcode-select --install
+```
 
 ## Homebrew
 
@@ -13,10 +61,12 @@ brew install pyenv-virtualenv
 brew cask install 4k-video-downloader
 brew cask install appcleaner
 brew cask install biscuit
+brew cask install cakebrew
 brew cask install ccleaner
 brew cask install coteditor
 brew cask install firealpaca
 brew cask install firefox
+brew tap caskroom/fonts
 brew cask install freemind
 brew cask install google-chrome
 brew cask install google-japanese-ime
@@ -83,3 +133,23 @@ brew cask upgrade
 
 * [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
   * https://qiita.com/tomokei5634/items/22128efe306ce9bc5682
+
+## starship
+
+* https://starship.rs
+* [iTerm2とstarshipでterminalとshellをお洒落にしました！ \- Qiita](https://qiita.com/macololidoll/items/1c369217c6203dd479bd)
+
+```shell
+$ brew install starship
+$ echo 'eval "$(starship init bash)"' >> ~/.bash_profile
+$ exec $SHELL -l
+ ```
+ 
+ ### starship設定ファイル
+ 
+ ```shell
+ $ mkdir ~/.config
+ $ touch ~/.config/starship.toml
+ ```
+ 
+ 
