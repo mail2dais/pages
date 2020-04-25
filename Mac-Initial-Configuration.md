@@ -1,8 +1,9 @@
 # Macの初期設定
 
-大半は、「[Mac を買ったら必ずやっておきたい初期設定 \- Qiita](https://qiita.com/ucan-lab/items/c1a12c20c878d6fb1e21)」をベースにしている。
+参考サイト
+* [Mac を買ったら必ずやっておきたい初期設定 \- Qiita](https://qiita.com/ucan-lab/items/c1a12c20c878d6fb1e21)
 
-## 最初にやること
+# 最初にやること
 
 * ソフトウェア・アップデート
 * 「システム環境設定」から
@@ -14,18 +15,18 @@
   * 「Spotlight」、「検索結果」より必要なものだけに絞る
     * Spotlightの検索候補、アプリケーション、フォルダ、計算機
 
-## Finder
+# Finder
 
 「環境設定」から、
 
 * 「一般」タブから、「ハードディスク」にチェックする。「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
 * 「サイドバー」タブから、「最近の項目」と「AirDrop」と「タグ」のチェックを外し、「ホームディレクトリ」にチェック、
 
-## 仮想ディスプレイ
+# 仮想ディスプレイ
 
 * 「Ctrl + ↑」でMission Controlが開いたら、右上にある「+」で「デスクトップ X」を追加する
 
-## ターミナル設定
+# ターミナル設定
 
 * 「環境設定」から
   * プロファイルは、Proをベースに複製する
@@ -113,31 +114,73 @@ brew cleanup
 brew doctor
 ```
 
-## Google Add-on
+## starship
 
-* ato-ichinen
-* AutoPagerize
-* Back to Back
-* Create Link
+* https://starship.rs
+* [iTerm2とstarshipでterminalとshellをお洒落にしました！ \- Qiita](https://qiita.com/macololidoll/items/1c369217c6203dd479bd)
+
+```shell
+brew install starship
+echo 'eval "$(starship init bash)"' >> ~/.bash_profile
+exec $SHELL -l
+ ```
+ 
+ ### starship設定ファイル
+ 
+ ```shell
+ mkdir ~/.config
+ touch ~/.config/starship.toml
+ ```
+ 
+ ```
+ # Disable the newline at the start of the prompt
+add_newline = false
+
+[character]
+symbol = "➜"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[directory]
+truncate_to_repo = false
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 4
+truncation_symbol = ""
+
+[time]
+disabled = false
+format = "🕙[ %T ]"
+utc_time_offset = "+9"
+ ```
+ 
+# Google Add-on
+
+* [ato-ichinen](https://chrome.google.com/webstore/detail/ato-ichinen/pojaolkbbklmcifckclknpolncdmbaph?hl=ja)
+* [AutoPagerize](https://chrome.google.com/webstore/detail/autopagerize/igiofjhpmpihnifddepnpngfjhkfenbp?hl=ja)
+* [Adblocker for YouTube](https://chrome.google.com/webstore/detail/adblocker-for-youtube/ldkihpcibakajmpnggbjnehoifnnpebn?hl=ja)
+* [Back to Back](https://chrome.google.com/webstore/detail/back-to-back/jegdggknidpkiahafcbphabbjcahildm?hl=ja)
+* [Create Link](https://chrome.google.com/webstore/detail/create-link/gcmghdmnkfdbncmnmlkkglmnnhagajbm?hl=ja)
 * Flash Video Downloader
-* HTTPS Everywhere
-* Keepa - Amazon Price Tracker
-* LastPass: Free Password Manager
-* OneClick Cleaner for Chrome
-* OneTab
-* Peek-a-tab, Tabs Manager for Google Chrome™
-* PrintWhatYouLike
-* Save to Pocket
-* Simplify Gmail
-* Tampermonkey
+* [HTTPS Everywhere](https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=ja)
+* [Keepa - Amazon Price Tracker](https://chrome.google.com/webstore/detail/keepa-amazon-price-tracke/neebplgakaahbhdphmkckjjcegoiijjo?hl=ja)
+* [LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd?hl=ja)
+* [OneClick Cleaner for Chrome](https://chrome.google.com/webstore/detail/oneclick-cleaner-for-chro/oncckmaelaecccmaniihojgeopkcajfh?hl=ja)_
+* [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?hl=ja)
+* [Peek-a-tab](https://chrome.google.com/webstore/detail/peek-a-tab-tabs-manager-f/nnpdamdaknpnohmlbnmgphiodghbohop?hl=ja)
+* [PrintWhatYouLike](https://chrome.google.com/webstore/detail/printwhatyoulike/npgfabafajliaooeicdoahbpoajfmbbe?hl=ja)
+* [Save to Pocket](https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=ja)
+* [Simplify Gmail](https://chrome.google.com/webstore/detail/simplify-gmail/pbmlfaiicoikhdbjagjbglnbfcbcojpj?hl=ja)
+* [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)
 * Vue.js devtools
 * Wappalyzer
-* その本、図書館にあります。
-* アマゾン注文履歴フィルタ
+* [その本、図書館にあります。](https://chrome.google.com/webstore/detail/その本、図書館にあります%E3%80%82/ldidobiipljjgfaglokcehmiljadanle?hl=ja)
+* [アマゾン注文履歴フィルタ](https://chrome.google.com/webstore/detail/その本、図書館にあります%E3%80%82/ldidobiipljjgfaglokcehmiljadanle?hl=ja)
 * ストリームレコーダー
-* 自動価格比較／ショッピング検索（Auto Price Checker）
+* [自動価格比較／ショッピング検索（Auto Price Checker）](https://chrome.google.com/webstore/detail/自動価格比較%EF%BC%8Fショッピング検索（auto-pric/hafkflejlikjnadiclapppceddoielio?hl=ja)
 
-## Firefox
+# Firefox
 
 * Download Star
 * Keepa - Amazon Price Tracker
@@ -147,27 +190,50 @@ brew doctor
 * Tampermonkey
 * Tile Pages WE
 
-## Visual Studio Code
+# Visual Studio Code
 
-* [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
-  * https://qiita.com/tomokei5634/items/22128efe306ce9bc5682
+* [【初心者】VSCodeの設定同期エクステンション「Setting Sync」](https://qiita.com/tomokei5634/items/22128efe306ce9bc5682)
+  * [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
-## starship
-
-* https://starship.rs
-* [iTerm2とstarshipでterminalとshellをお洒落にしました！ \- Qiita](https://qiita.com/macololidoll/items/1c369217c6203dd479bd)
-
-```shell
-$ brew install starship
-$ echo 'eval "$(starship init bash)"' >> ~/.bash_profile
-$ exec $SHELL -l
- ```
- 
- ### starship設定ファイル
- 
- ```shell
- $ mkdir ~/.config
- $ touch ~/.config/starship.toml
- ```
- 
+* Auto Close Tag
+* Auto Rename Tag
+* Auto-Open Markdown Preview
+* Better Comment
+* Better Comments
+* Bracket Pair Colorizer 2
+* Code Blue
+* DotENV
+* Dracula Theme
+* Evillnspector
+* Git History
+* indent-rainbow
+* Japanese Language Pack for VSC
+* Markdown All in One
+* Markdown PDF
+* Markdown Preview Enhanced
+* Markdown TOC
+* Markdown+Math
+* Material Icon Theme
+* Output Colorizer
+* PlantUML
+* Poor Man's T-SQL Formatter
+* Pretttier - Code formatter
+* Pyright
+* Python
+* Rainbow CSV
+* Regex Previewer
+* Remote - Containers
+* Remote - SSH
+* Remote - SSH: Editing Configuration Files
+* Remote - SSH: Explorer
+* Remote - WSL
+* Remote Development
+* Setting Sync
+* Spell Right
+* SQLTools - Database tools
+* Trailing Spaces
+* Vetur
+* Visual Studio IntelliCode
+* vscode-icons
+* テキスト構成くん
  
