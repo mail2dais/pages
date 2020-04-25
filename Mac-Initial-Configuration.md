@@ -1,5 +1,7 @@
 # Macの初期設定
 
+大半は、「[Mac を買ったら必ずやっておきたい初期設定 \- Qiita](https://qiita.com/ucan-lab/items/c1a12c20c878d6fb1e21)」をベースにしている。
+
 ## 最初にやること
 
 * ソフトウェア・アップデート
@@ -41,17 +43,6 @@ $ defaults write com.apple.finder AppleShowAllFiles -boolean true
 
 ```shell
 $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-```
-
-## 権限設定
-
-Homebrewでインストールする際に、/user/localのパーミッションエラーが発生することがある。
-追加されたユーザーでHomebrewを実行する時などにパーミッションエラーが起きるので、予め権限設定する。
-
-## Xcode Command Line Tools
-
-```shell
-$ xcode-select --install
 ```
 
 ## Homebrew
