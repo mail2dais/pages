@@ -10,7 +10,20 @@
   * 「Bluetooth」、「Bluetoothをオフにする」
   * 「キーボード」、「キーボード」タブから「修飾キー」、「Caps Lock」キーを「Control」にする
   * 「日付と時刻」、「時計」タブから、「日付を表示」にする。
-  * 「共有」、「コンピュータ名」をシンプルな名前にする
+  * 「共有」、「コンピュータ名」をシンプルな名前にする(e.g.: MacbookAir)
+  * 「Spotlight」、「検索結果」より必要なものだけに絞る
+    * Spotlightの検索候補、アプリケーション、フォルダ、計算機
+
+## Finder
+
+「環境設定」から、
+
+* 「一般」タブから、「ハードディスク」にチェックする。「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
+* 「サイドバー」タブから、「最近の項目」と「AirDrop」と「タグ」のチェックを外し、「ホームディレクトリ」にチェック、
+
+## 仮想ディスプレイ
+
+* 「Ctrl + ↑」でMission Controlが開いたら、右上にある「+」で「デスクトップ X」を追加する
 
 ## ターミナル設定
 
@@ -49,34 +62,32 @@ $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew tap caskroom/cask
 
-brew install mackup
-brew install pyenv
-brew install pyenv-virtualenv
+brew update
+brew cask upgrade
 
 brew cask install 4k-video-downloader
-brew cask install appcleaner
+brew cask install appcleaner # SmartDeleteをOnにする
 brew cask install biscuit
 brew cask install cakebrew
 brew cask install ccleaner
 brew cask install coteditor
 brew cask install firealpaca
 brew cask install firefox
-brew tap caskroom/fonts
+#brew tap caskroom/fonts
 brew cask install freemind
 brew cask install google-chrome
-brew cask install google-japanese-ime
+#brew cask install google-japanese-ime # しばらく「ことえり」を使ってみよう。
 brew cask install iina
 brew cask install iterm2
 brew cask install lastpass
 brew cask install macwinzipper
 brew cask install messenger
-brew cask install monolingual
+brew cask install monolingual #"Language"から、日本語と英語以外を選択、"Archtecture"から、Intel-64-bitのもの以外を選択し、削除する（それぞれ７９９．３MBと23.8MBの節約）。
 brew cask install namechanger
-brew cask install octave-app
 brew cask install onyx
 brew cask install rectangle
+brew cask install r
 brew cask install rstudio
 brew cask install seashore
 brew cask install simple-comic
@@ -87,9 +98,19 @@ brew cask install whatsapp
 brew cask install the-unarchiver
 brew cask install visual-studio-code
 
-brew cask install cd-to-iterm
+#brew cask install cd-to-iterm
 
 brew cask upgrade
+
+brew install mackup
+#brew install octave
+
+brew install pyenv
+brew install pyenv-virtualenv
+
+brew cleanup
+#brew cask cleanup
+brew doctor
 ```
 
 ## Google Add-on
