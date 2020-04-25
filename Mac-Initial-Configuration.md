@@ -10,6 +10,10 @@
   * 「Dock」、「最近使ったアプリケーションをDockに表示」をチェックオフ
   * 「Bluetooth」、「Bluetoothをオフにする」
   * 「キーボード」、「キーボード」タブから「修飾キー」、「Caps Lock」キーを「Control」にする
+  * 「キーボード」、「ユーザ辞書」タブから次の3つをチェックオフ
+    * 英字入力中にスペルを自動変換
+    * 文等を自動的に大文字にする
+    * スペースバーを2回押してピリオドを入力
   * 「日付と時刻」、「時計」タブから、「日付を表示」にする。
   * 「共有」、「コンピュータ名」をシンプルな名前にする(e.g.: MacbookAir)
   * 「Spotlight」、「検索結果」より必要なものだけに絞る
@@ -21,6 +25,7 @@
 
 * 「一般」タブから、「ハードディスク」にチェックする。「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
 * 「サイドバー」タブから、「最近の項目」と「AirDrop」と「タグ」のチェックを外し、「ホームディレクトリ」にチェック、
+* 「詳細」タブから、「すべてのファイル名拡張子を表示」にチェック
 
 ## LanDiskに接続する
 
@@ -51,6 +56,8 @@ defaults read /Library/Preferences/com.apple.AppleShareClient afp_disabled_uams
 # 仮想ディスプレイ
 
 * 「Ctrl + ↑」でMission Controlが開いたら、右上にある「+」で「デスクトップ X」を追加する
+* 「システム環境設定」から「キーボード」、「ショートカット」タブ、「デスクトップXへ切り替え」にチェックする
+* 「システム環境設定」から「Mission Control」、「最新の使用状況に基づいて操作スペースを自動的に並び替える」のチェックを外す
 
 # ターミナル設定
 
@@ -98,6 +105,7 @@ brew cask install appcleaner # SmartDeleteをOnにする
 brew cask install biscuit
 brew cask install cakebrew
 brew cask install ccleaner
+brew cask install clipy
 brew cask install coteditor
 brew cask install firealpaca
 brew cask install firefox
@@ -119,6 +127,7 @@ brew cask install rstudio
 brew cask install seashore
 brew cask install simple-comic
 brew cask install skitch
+brew cask install sourcetree
 brew cask install spotify
 brew cask install typora
 brew cask install whatsapp
@@ -263,3 +272,10 @@ utc_time_offset = "+9"
 * vscode-icons
 * テキスト構成くん
  
+# AppStore
+
+* [LINE](https://line.me/ja/)
+
+# それ以外
+
+* [GoPro Quick](https://gopro.com/ja/jp/shop/softwareandapp/quik-%7C%E2%80%8B-デスクトップをインストール/Quik-Desktop.html)
