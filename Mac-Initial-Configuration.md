@@ -22,6 +22,32 @@
 * 「一般」タブから、「ハードディスク」にチェックする。「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
 * 「サイドバー」タブから、「最近の項目」と「AirDrop」と「タグ」のチェックを外し、「ホームディレクトリ」にチェック、
 
+## LanDiskに接続する
+
+* [MacOS X 10.9 で少し古い LinkStation に AFP で接続する方法](https://align-centre.hatenablog.com/entry/2014/06/10/134954)
+
+```shell
+ls com.apple.Apple* # com.apple.AppleShareClient.plistが無いことを確認する
+sudo defaults write /Library/Preferences/com.apple.AppleShareClient afp_disabled_uams -array "Cleartxt Passwrd" "MS2.0" "2-Way Randnum exchange"
+defaults read /Library/Preferences/com.apple.AppleShareClient afp_disabled_uams
+```
+
+次が表示されたらOK
+
+```
+(
+    "Cleartxt Passwrd",
+    "MS2.0",
+    "2-Way Randnum  exchange"
+)
+```
+
+今後は、Windows Storage Server を搭載した NAS がベスト、のようだ。
+
+他にも。
+
+* [MavericksにしたらNASがおかしい、そんなときの対策](https://news.mynavi.jp/article/osxhack-110/)
+
 # 仮想ディスプレイ
 
 * 「Ctrl + ↑」でMission Controlが開いたら、右上にある「+」で「デスクトップ X」を追加する
