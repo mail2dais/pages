@@ -279,3 +279,49 @@ utc_time_offset = "+9"
 # それ以外
 
 * [GoPro Quick](https://gopro.com/ja/jp/shop/softwareandapp/quik-%7C%E2%80%8B-デスクトップをインストール/Quik-Desktop.html)
+
+# Git
+
+* [Mac Git 初期設定](https://qiita.com/ucan-lab/items/aadbedcacbc2ac86a2b3)
+
+```shell
+$ which git
+/usr/bin/git
+
+$ git --version
+git version 2.24.2 (Apple Git-127)
+
+# ローカルの設定
+$ git config -l 
+# グローバルの設定
+$ git config --global -l
+
+# ディレクトリ、ファイル設定
+$ mkdir ~/.ssh
+$ touch ~/.ssh/config
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/*
+
+$ vi ~/.ssh/config
+
+Host *
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  ServerAliveInterval 15
+  ServerAliveCountMax 30
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentitiesOnly yes
+```
+
+## global .gitignore 設定(推奨)
+
+```shell
+$ vi ~/.config/git/ignore
+```
+
+```
+.DS_Store
+```
+
+
