@@ -92,6 +92,16 @@ $ defaults write com.apple.finder AppleShowAllFiles -boolean true
 $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 ```
 
+## .bashrcと.bash_profileの違い
+
+* [Linux: \.bashrcと\.bash\_profileの違いを今度こそ理解する](https://techracho.bpsinc.jp/hachi8833/2019_06_06/66396)
+
+| 設定ファイル    | 利用法                                                                                                       | 例                                                                 |
+|-----------------|--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| `~/.profile`      | ログイン時にそのセッション全体に適用するものを記述する。シェルの種類に依存しないものを記述する。            | 環境変数、PATH変数 など                                         |
+| `~/.bashrc`       | bashでしか使わないものを記述する。対話モードで使うものはすべてここに書く。ここでは何も出力してはならない。 | エイリアス、シェルオプション、EDITOR変数、プロンプト設定 など |
+| `~/.bash_profile` | `~/.profile`と同じに使えるが`、bash`のみで有効。余計なものは極力書かない。右の順に読み込むだけにする。           | `~/.profile`があれば読み込む、`~/.bashrc`があれば読む               |
+
 ## Homebrew
 
 ```shell
