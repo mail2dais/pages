@@ -102,6 +102,19 @@ $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 | `~/.bashrc`       | bashでしか使わないものを記述する。対話モードで使うものはすべてここに書く。ここでは何も出力してはならない。 | エイリアス、シェルオプション、EDITOR変数、プロンプト設定 など |
 | `~/.bash_profile` | `~/.profile`と同じに使えるが`、bash`のみで有効。余計なものは極力書かない。右の順に読み込むだけにする。           | `~/.profile`があれば読み込む、`~/.bashrc`があれば読む               |
 
+### 隠しファイルを削除
+
+* [\.DS\_Storeや\.\_ファイルを削除したい](https://geek-memo.com/delete_exclude/)
+
+`.bashrc`に記載する。
+
+```shell
+function delgomi () {
+    find $1 \( -name '.DS_Store' -or -name '._*' -or -name 'Thumbs.db' -or -name 'Desktop.ini' \) -delete -print;
+}
+alias delgomi=delgomi
+```
+
 ## Homebrew
 
 ```shell
