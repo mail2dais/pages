@@ -225,6 +225,10 @@ utc_time_offset = "+9"
 * ストリームレコーダー
 * [自動価格比較／ショッピング検索（Auto Price Checker）](https://chrome.google.com/webstore/detail/自動価格比較%EF%BC%8Fショッピング検索（auto-pric/hafkflejlikjnadiclapppceddoielio?hl=ja)
 
+## 英辞郎の設定
+
+* [Chromeの検索エンジンの設定を使いこなしていろんなとこから瞬間検索 \- Qiita](https://qiita.com/awakia/items/96cd2181ebbd885ff326)
+
 # Firefox
 
 * Download Star
