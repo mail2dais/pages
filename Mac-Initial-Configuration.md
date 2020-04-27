@@ -351,4 +351,17 @@ $ vi ~/.config/git/ignore
 .DS_Store
 ```
 
+# iTunesからMusicへ
 
+Catalinaになって、iTunesが廃止されて、Musicになったわけだが、色々と構成が変わった。
+具体的には、保存先が`./iTunes`から、`./Music`になったり、
+音楽ファイルが`iTunes Music Library.xml`から、`Music Library.musiclibrary`になったり。
+
+そのために必要な事は、
+
+* Musicを「Optionキー」で起動し、希望のパスを選択。私の場合は、NASを指定。
+* 「環境設定」から、「ファイル」タブ、「ライブラリへの追加時にファイルを"Music Media"フォルダにコピー」にチェックを入れる
+* 「ファイル」から「読み込み」で、過去のiTunesフォルダを指定して読み込む。
+
+これをすると、容量にもよるが、半日から１日かかるだろう。
+結果的に、Musicフォルダに、iTunesフォルダから移管された事になるが、二重に容量を取っていることになるので、iTunesフォルダは消して良いだろう。
