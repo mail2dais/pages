@@ -146,7 +146,8 @@ brew cask install namechanger
 brew cask install onyx
 brew cask install qlcolorcode
 brew cask install qlmarkdown
-brew cask install quicklook-csv
+brew cask install qlstephen
+#brew cask install quicklook-csv # quicklook-csv-jpを使う。
 brew cask install quicklook-json
 brew cask install rectangle
 brew cask install r
