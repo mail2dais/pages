@@ -144,6 +144,10 @@ brew cask install messenger
 brew cask install monolingual #"Language"から、日本語と英語以外を選択、"Archtecture"から、Intel-64-bitのもの以外を選択し、削除する（それぞれ７９９．３MBと23.8MBの節約）。
 brew cask install namechanger
 brew cask install onyx
+brew cask install qlcolorcode
+brew cask install qlmarkdown
+brew cask install quicklook-csv
+brew cask install quicklook-json
 brew cask install rectangle
 brew cask install r
 brew cask install rstudio
@@ -368,3 +372,7 @@ Catalinaになって、iTunesが廃止されて、Musicになったわけだが�
 
 * [Mac OS Catalina：旧iTunesから「ミュージック」への移行時のトラブルと解決 \| 書き散らしの日々](https://ameblo.jp/aibahiro/entry-12548591606.html)
 * [CatalinaにしてiTunesからミュージックなどへの移行で失敗してやったこと \| 人生共有](https://aquarium-goldfish.com/catalina-itunes-music-etc/)
+
+# その他のユーティリティ
+
+* [buntatsu/quicklook\-csv\-jp: A QuickLook plugin for CSV files](https://github.com/buntatsu/quicklook-csv-jp)
