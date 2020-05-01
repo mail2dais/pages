@@ -377,3 +377,68 @@ Catalinaになって、iTunesが廃止されて、Musicになったわけだが�
 # その他のユーティリティ
 
 * [buntatsu/quicklook\-csv\-jp: A QuickLook plugin for CSV files](https://github.com/buntatsu/quicklook-csv-jp)
+
+# vue
+
+* [MacにNode\.jsをインストール \- Qiita](https://qiita.com/kyosuke5_20/items/c5f68fc9d89b84c0df09)
+
+まずはnodebreをインストールする。
+
+```shell
+brew install nodebrew
+nodebrew -v
+```
+
+次にNode.jsのインストールする。
+インストールできるバージョンを確認する。
+
+``shell
+nodebrew ls-remote
+```
+
+が、面倒なので、安定版を入れるようと思うが、その前にディレクトリを作る。
+
+```shell
+mkdir -p ~/.nodebrew/src
+nodebrew install-binary stable
+nodebrew ls
+```
+
+インストール直後は`current: none`となっているため、必要なバージョンを有効化する。
+
+```shell
+nodebrew use v14.1.0
+```
+
+次を`.bash_profile`に追加し、sourceする。
+
+```
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+```
+
+次にvueをインストールする。
+
+```shell
+npm install -g @vue/cli
+vue --version
+
+npm install -g @vue/cli-service-global #
+```
+
+vueのプロジェクト「vue_test」を作る際には、次の通り。
+
+```shell
+cd
+cd workspace
+vue create vue_test # vue init webpack vue_test
+cd vue_test
+vue serve (実行したい.vueファイル) # 評価用テストサーバを起動
+vue serve (実行したい.vueファイル) --open # 評価用テストサーバを起動し、ブラウザを開く
+vue build (実行したい.vueファイル) # バンドル(本番用)実行
+```
+
+* [VueCLI3導入とできることまとめ \- Qiita](https://qiita.com/tomo0/items/8dc619cc271f4c69658a)
+
+```
+npm install --save vuedraggable
+```
