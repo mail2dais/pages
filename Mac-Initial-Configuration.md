@@ -169,6 +169,8 @@ brew cask upgrade
 brew install mackup
 #brew install octave
 
+brew install tree
+
 brew install pyenv
 brew install pyenv-virtualenv
 
@@ -441,4 +443,37 @@ vue build (実行したい.vueファイル) # バンドル(本番用)実行
 
 ```
 npm install --save vuedraggable
+```
+
+# React
+
+VueよりもReactの方が将来性があるような気配。
+
+* [ReactとVueのどちらを選ぶか \- Qiita](https://qiita.com/yoichiwo7/items/236b6535695ea67b4fbe)
+* [あらためてReactとVueを比較してみる〔2020年最新版〕 ｜ 25歳で独立したフリーランスエンジニア \-じゃけぇ\- のあれこれ](https://freelance-jak.com/technology/react/2472/)
+
+とりあえず、次を参考にインストールしてみる。Vueのインストール時に、既にnodebrewやNode等を入れているので、手軽。
+
+* [気になるReactをキャッチアップ！Macで手軽に開発環境をつくろう！ \- Qiita](https://qiita.com/turkeyzawa/items/c46f367eaddec3cf3025)
+
+```shell
+npm install -g create-react-app
+```
+
+これにより、次の一文でフォルダも作れ、ブラウザでデモ・ページも開ける。
+
+```shell
+create-react-app react_test
+cd react_test
+npm start
+```
+
+と思ったら、公式サイトでは`npm uninstall -g create-react-app`でアンインストールし、をし、`npx`で入れるようにと。
+
+* [facebook/create\-react\-app: Set up a modern web app by running one command\.](https://github.com/facebook/create-react-app)
+
+```shell
+npx create-react-app my-app
+cd my-app
+npm start
 ```
