@@ -167,6 +167,7 @@ brew cask install visual-studio-code
 brew cask upgrade
 
 brew install mackup
+brew install jq
 #brew install octave
 
 brew install tree
