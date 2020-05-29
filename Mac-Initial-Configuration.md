@@ -478,3 +478,75 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+
+# IMIコンポーネントツール
+
+この記事に出会う。
+
+* [経産省発の npm モジュール！住所や電話番号の正規化、ジオコーディングなどができる IMI コンポーネントツールを試した！ \- Geolonia developer's blog](https://blog.geolonia.com/2020/05/29/imi-tools.html)
+* [IMI 情報共有基盤 コンポーネントツール](https://info.gbiz.go.jp/tools/imi_tools/)
+
+リンク先にあるtgzファイルをダウンロードし、解凍とインストールする。
+
+が、そもそもだが、PATHが通っていなかった。以下を`.bash_profile`に追加する。
+
+```
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+```
+
+npmには、ローカルモードとグローバルモードがあり、前者はカレントフォルダに、後者はprefixに、それぞれにあるnode_modulesフォルダにパッケージをインストールする。
+グローバルパッケージの場所を確認するため、`npm config list`を実行。この中に、`prefix`があることがわかる。あるいは、`npm config get prefix`でも良い。
+
+```shell
+$ npm config list
+; cli configs
+metrics-registry = "https://registry.npmjs.org/"
+scope = ""
+user-agent = "npm/6.14.5 node/v14.1.0 darwin x64"
+
+; node bin location = /Users/dais/.nodebrew/node/v14.1.0/bin/node
+; cwd = /Users/dais
+; HOME = /Users/dais
+; "npm config ls -l" to show all defaults.
+
+$ npm config get prefix
+/Users/dais/.nodebrew/node/v14.1.0
+```
+
+これを踏まえ、グローバルモードでパッケージをインストールするには、`-global`オプションを付与する。
+
+```
+curl https://info.gbiz.go.jp/tools/imi_tools/resource/imi-enrichment-address/imi-enrichment-address-2.0.0.tgz -o imi-enrichment-address-2.0.0.tgz
+npm install imi-enrichment-address-2.0.0.tgz -global
+```
+
+`which imi-enrichment-address`でパスが見つかるはず。
+
+```
+/Users/dais/.nodebrew/current/bin/imi-enrichment-address
+```
+
+これにより、次のようなCLIができるようになる(README.md参照)。
+
+```
+# ヘルプの表示
+imi-enrichment-address -h
+
+JSON ファイルの変換
+imi-enrichment-address input.json > output.json
+
+# 標準入力からの変換
+cat input.json | imi-enrichment-address > output.json
+
+# 文字列からの変換
+imi-enrichment-address -s 霞が関2 > output.json
+```
+
+また、サーバとして起動することもできる。
+
+```
+node node_modules/imi-enrichment-address/bin/server.js 8080
+```
+
+グローバルパッケージを確認するには、`npm list -g --depth=0`を実行する。
+
