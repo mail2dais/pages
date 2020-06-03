@@ -34,6 +34,7 @@ brew cask install messenger
 brew cask install monolingual #"Language"から、日本語と英語以外を選択、"Archtecture"から、Intel-64-bitのもの以外を選択し、削除する（それぞれ７９９．３MBと23.8MBの節約）。
 brew cask install namechanger
 brew cask install onyx
+brew cask install p4v
 #brew cask install qlcolorcode #しばらく、Glanceを使ってみる。　https://applech2.com/archives/20200520-all-in-one-quick-look-plugin-glance-for-mac.html
 #brew cask install qlmarkdown
 #brew cask install qlstephen
