@@ -119,66 +119,9 @@ alias delgomi=delgomi
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-brew update
-brew cask upgrade
-
-brew cask install 4k-video-downloader
-brew cask install appcleaner # SmartDeleteをOnにする
-brew cask install biscuit
-brew cask install cakebrew
-brew cask install ccleaner
-brew cask install clipy
-brew cask install coteditor
-brew cask install firealpaca
-brew cask install firefox
-#brew tap caskroom/fonts
-brew cask install freemind
-brew cask install google-chrome
-#brew cask install google-japanese-ime # しばらく「ことえり」を使ってみよう。
-brew cask install iina
-brew cask install iterm2
-brew cask install lastpass
-brew cask install macwinzipper
-brew cask install messenger
-brew cask install monolingual #"Language"から、日本語と英語以外を選択、"Archtecture"から、Intel-64-bitのもの以外を選択し、削除する（それぞれ７９９．３MBと23.8MBの節約）。
-brew cask install namechanger
-brew cask install onyx
-brew cask install qlcolorcode
-brew cask install qlmarkdown
-brew cask install qlstephen
-#brew cask install quicklook-csv # quicklook-csv-jpを使う。
-brew cask install quicklook-json
-brew cask install rectangle
-brew cask install r
-brew cask install rstudio
-brew cask install seashore
-brew cask install simple-comic
-brew cask install skitch
-brew cask install sourcetree
-brew cask install spotify
-brew cask install typora
-brew cask install whatsapp
-brew cask install the-unarchiver
-brew cask install visual-studio-code
-
-#brew cask install cd-to-iterm
-
-brew cask upgrade
-
-brew install mackup
-brew install jq
-#brew install octave
-
-brew install tree
-
-brew install pyenv
-brew install pyenv-virtualenv
-
-brew cleanup
-#brew cask cleanup
-brew doctor
 ```
+
+あとはShellで、[brewsetup.sh](https://github.com/mail2dais/pages/blob/master/brewsetup.sh)を実行する。
 
 ## starship
 
