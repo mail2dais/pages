@@ -24,6 +24,7 @@ brew cask install firealpaca
 brew cask install firefox
 #brew tap caskroom/fonts
 brew cask install freemind
+brew cask install g-desktop-suite
 brew cask install google-chrome
 #brew cask install google-japanese-ime # しばらく「ことえり」を使ってみよう。
 brew cask install iina
