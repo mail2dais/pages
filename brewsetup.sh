@@ -3,6 +3,7 @@
 brew update
 
 brew install mackup
+brew install fd # https://news.mynavi.jp/article/20200626-1069025/
 brew install jq
 #brew install octave
 
