@@ -555,5 +555,6 @@ pip install --upgrade pip
 pipを通して入れたのはこちら。
 
 ```
+pip install requests
 pip install beautifulsoup4
 ```
