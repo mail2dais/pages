@@ -493,3 +493,67 @@ node node_modules/imi-enrichment-address/bin/server.js 8080
 
 グローバルパッケージを確認するには、`npm list -g --depth=0`を実行する。
 
+# Python
+
+こちらを参考にする。
+
+* [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
+* [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
+
+が、いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたい。
+
+```shell
+brew install anyenv
+anyenv init
+echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
+exec $SHELL -l
+anyenv install --init
+anyenv -v
+anyenv install -l
+```
+
+なんか分からないけども、anyenv-updateプラグインも導入する。
+
+```
+mkdir -p $(anyenv root)/plugins
+git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+```
+
+pyenvをインストールする。
+
+```
+anyenv install pyenv
+
+# シェルの再起動: bash
+exec $SHELL -l
+```
+
+ちゃんと動くかを確認し、2系と3系の最新版を確認し、3系の最新版を入れた上で、それを普段使用するPythonに設定する。
+
+```
+pyenv --version
+pyenv --help
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$'
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 2' | tail -n 1
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 3' | tail -n 1
+pyenv install 3.8.3
+pyenv versions
+pyenv global 3.8.3
+
+# pipインストールされているpypyを確認
+python -m pip list
+# 必要ならpipのアップグレード
+pip install --upgrade pip
+```
+
+どうやら、pipではなく、pipenvがポピュラーみたい。
+
+* [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)
+
+でも、個人開発なら不要かも。
+
+pipを通して入れたのはこちら。
+
+```
+pip install beautifulsoup4
+```
