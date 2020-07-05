@@ -557,4 +557,7 @@ pipを通して入れたのはこちら。
 ```
 pip install requests
 pip install beautifulsoup4
+
+brew install tcl-tk ghostscript # camelot の dependency.
+pip install camelot-py[cv] # tabula-pyも試したが、Javaが必要になるとのことで、やめた。
 ```
