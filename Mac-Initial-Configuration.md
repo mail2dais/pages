@@ -561,3 +561,19 @@ pip install beautifulsoup4
 brew install tcl-tk ghostscript # camelot の dependency.
 pip install camelot-py[cv] # tabula-pyも試したが、Javaが必要になるとのことで、やめた。
 ```
+
+# Jupyter
+
+```
+pip install numpy
+pip install scipy
+pip install scikit-learn
+pip install matplotlib
+pip install Pillow
+pip install jupyter
+
+cd 
+cd workspace
+mkdir jupyter-notebook
+jupyter notebook --notebook-dir=~/workspace/jupyter-notebook
+```
