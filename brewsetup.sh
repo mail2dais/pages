@@ -1,5 +1,7 @@
 #!bin/sh
 
+# curl -s https://github.com/mail2dais/pages/blob/master/brewsetup.sh | /bin/bash
+
 brew update
 
 brew install mackup
