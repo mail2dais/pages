@@ -249,6 +249,7 @@ utc_time_offset = "+9"
 * Visual Studio IntelliCode
 * vscode-icons
 * テキスト構成くん
+* [VSCodeでPython書いてる人はとりあえずこれやっとけ〜 \- Qiita](https://qiita.com/nanato12/items/ddf26487eb30714251c3)
  
 # AppStore
 
