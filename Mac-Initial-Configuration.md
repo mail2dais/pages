@@ -501,7 +501,7 @@ node node_modules/imi-enrichment-address/bin/server.js 8080
 * [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
 * [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
 
-が、いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたい。
+が、いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたい。知らんけど。
 
 ```shell
 brew install anyenv
@@ -547,11 +547,11 @@ python -m pip list
 pip install --upgrade pip
 ```
 
-どうやら、pipではなく、pipenvがポピュラーみたい。
+ポイントは、pyenvがPythonのバージョンを変えるものだということ。
+
+どうやら、pipではなく、pipenvがポピュラーみたい。でも、個人開発なら不要かも。
 
 * [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)
-
-でも、個人開発なら不要かも。
 
 pipを通して入れたのはこちら。
 
@@ -561,6 +561,29 @@ pip install beautifulsoup4
 
 brew install tcl-tk ghostscript # camelot の dependency.
 pip install camelot-py[cv] # tabula-pyも試したが、Javaが必要になるとのことで、やめた。
+```
+
+そのうえで、Pythonでファオルトの仮想環境ツール、venvを使うと良いみたい。
+例えば、[Open-Interpreter](https://qiita.com/yanagih/items/466a5560bd771e2b9030)を使う場合だ。
+
+* [pyenv](https://qiita.com/mogom625/items/b1b673f530a05ec6b423)
+* [venv](https://qiita.com/fiftystorm36/items/b2fd47cf32c7694adc2e)
+
+```
+cd venv
+mkdir open-interpreter
+cd open-interpreter
+
+pyenv versions
+pyenv global 3.11.0
+# must be over 3.10.0
+
+python -m venv venv
+source venv/bin/activate
+pip install open-interpreter
+
+deactivate
+pyenv global 3.8.3
 ```
 
 # Jupyter
