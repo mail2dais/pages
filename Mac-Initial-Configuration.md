@@ -595,7 +595,9 @@ pip install scipy
 pip install scikit-learn
 pip install matplotlib
 pip install Pillow
-pip install jupyter
+pip install jupyterlab
+pip install jupyterlab-language-pack-ja-JP
+
 
 cd 
 cd workspace
