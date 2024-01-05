@@ -10,13 +10,10 @@
   * 「Dock」、「最近使ったアプリケーションをDockに表示」をチェックオフ
   * 「Bluetooth」、「Bluetoothをオフにする」
   * システム設定、キーボード、キーボード・ショートカットから「修飾キー」、「Caps Lock」キーを「Control」にする
-  * ~~「キーボード」、「ユーザ辞書」タブから次の3つをチェックオフ~~
-    * 英字入力中にスペルを自動変換
-    * 文等を自動的に大文字にする
-    * スペースバーを2回押してピリオドを入力
-  * ~~「日付と時刻」、「時計」タブから、「日付を表示」にする~~。
-  * ~~「共有」、「コンピュータ名」をシンプルな名前にする~~(e.g.: MacbookAir)
-    * システム設定、一般、情報、コンピュータ名を変更する
+  * 英字入力中にスペルを自動変換？
+  * 文頭を自動的に大文字にする
+  * 「日本語 - ローマ字入力」から、「Windows風のキー操作」にして、１度の変換で済むようにする。
+  * システム設定、一般、情報、コンピュータ名を変更する　(e.g.: MacbookAir)
   * 「Spotlight」、「検索結果」より必要なものだけに絞る
     * Spotlightの検索候補、アプリケーション、フォルダ、計算機
 
@@ -27,6 +24,195 @@
 * 「一般」タブから、「ハードディスク」にチェックする。「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
 * 「サイドバー」タブから、「最近の項目」と「AirDrop」と「タグ」のチェックを外し、「ホームディレクトリ」にチェック、
 * 「詳細」タブから、「すべてのファイル名拡張子を表示」にチェック
+
+# ターミナル設定
+
+* 「環境設定」から
+  * プロファイルは、Proをベースに複製する
+  * テキストはアンチエイリアス処理をチェックする
+  * フォントはMonaco 10pt
+
+## 隠しファイルを表示する
+
+```shell
+$ defaults write com.apple.finder AppleShowAllFiles -boolean true
+```
+
+## 共有フォルダで.DS_Storeを作成しない
+
+```shell
+$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+```
+
+## 隠しファイルを削除
+
+* [\.DS\_Storeや\.\_ファイルを削除したい](https://geek-memo.com/delete_exclude/)
+
+`.zshrc`に記載する。
+
+```shell
+function delgomi () {
+    find $1 \( -name '.DS_Store' -or -name '._*' -or -name 'Thumbs.db' -or -name 'Desktop.ini' \) -delete -print;
+}
+alias delgomi=delgomi
+```
+
+
+# Homebrew
+
+* [Homebrew](https://brew.sh)
+
+## インストールする項目
+
+```
+brew install pyenv amazon-chime	firefox	onyx amazon-photos		google-chrome		simple-comic app-cleaner		iina			spotify biscuit	keepassxc	tableplus brewlet	messenger	the-unarchiver coteditor	visual-studio-code dropbox			microsoft-teams	zoom duplicate-file-finder	monolingual namechanger
+```
+
+# Python
+
+pyenvをインストール済みなので、Global設定していく。
+ポイントは、pyenvがPythonのバージョンを変えるものだということ。
+
+```
+pyenv --version
+pyenv --help
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$'
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 2' | tail -n 1
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 3' | tail -n 1
+pyenv install 3.8.3
+pyenv versions
+pyenv global 3.8.3
+
+# pipインストールされているpypyを確認
+python -m pip list
+# 必要ならpipのアップグレード
+pip install --upgrade pip
+```
+
+こちらを参考にする。
+
+* [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
+* [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
+
+いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたいだが、不要かな。
+
+他にも、pipではなく、pipenvがポピュラーみたい。でも、個人開発なら不要かも。
+
+* [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)
+
+そのうえで、Pythonでファオルトの仮想環境ツール、venvを使うと良いみたい。
+例えば、[Open-Interpreter](https://qiita.com/yanagih/items/466a5560bd771e2b9030)を使う場合だ。
+
+* [pyenv](https://qiita.com/mogom625/items/b1b673f530a05ec6b423)
+* [venv](https://qiita.com/fiftystorm36/items/b2fd47cf32c7694adc2e)
+
+```
+cd venv
+mkdir open-interpreter
+cd open-interpreter
+
+pyenv versions
+pyenv global 3.11.0
+# must be over 3.10.0
+
+python -m venv venv
+source venv/bin/activate
+pip install open-interpreter
+
+deactivate
+pyenv global 3.8.3
+```
+
+## pipでインストールするものについて
+
+jupyterlab
+jupyterlab-language-pack-ja-JP
+
+# Chrome
+
+## 英辞郎の設定
+
+* [Chromeの検索エンジンの設定を使いこなしていろんなとこから瞬間検索 \- Qiita](https://qiita.com/awakia/items/96cd2181ebbd885ff326)
+
+* 検索エンジン名：ALC
+* キーワード：alc 
+* http://eow.alc.co.jp/search?q=%s
+
+
+# AppStore
+
+* [LINE](https://line.me/ja/)
+
+# Git
+
+* [Mac Git 初期設定](https://qiita.com/ucan-lab/items/aadbedcacbc2ac86a2b3)
+* [Mac GitHub SSH接続設定](https://qiita.com/ucan-lab/items/e02f2d3a35f266631f24)
+
+```shell
+$ which git
+/usr/bin/git
+
+$ git --version
+git version 2.24.2 (Apple Git-127)
+
+# ローカルの設定
+$ git config -l 
+# グローバルの設定
+$ git config --global -l
+
+# name/ID
+$ git config --global user.name "dais"
+$ git config --global user.email "7226738+mail2dais@users.noreply.github.com"
+
+# ディレクトリ、ファイル設定
+$ mkdir ~/.ssh
+$ touch ~/.ssh/config
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/*
+
+$ vi ~/.ssh/config
+
+Host *
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  ServerAliveInterval 15
+  ServerAliveCountMax 30
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentitiesOnly yes
+```
+
+## global .gitignore 設定(推奨)
+
+```shell
+$ vi ~/.config/git/ignore
+```
+
+## Git初期設定(お好み)
+
+```
+# git ファイル名の大文字・小文字の変更を検知する。
+
+$ git config --global core.ignorecase false
+
+# git カラー設定
+
+$ git config --global color.ui true
+$ git config --global color.diff auto
+$ git config --global color.status auto
+$ git config --global color.branch auto
+
+# git 日本語ファイル名をエスケープせずに表示
+
+$ git config --global core.quotepath false
+
+# マージコンフリクトを見やすくする
+
+$ git config --global merge.conflictStyle diff3
+```
+
+
+# 以下は過去
 
 ## LanDiskに接続する
 
@@ -54,19 +240,6 @@ defaults read /Library/Preferences/com.apple.AppleShareClient afp_disabled_uams
 
 * [MavericksにしたらNASがおかしい、そんなときの対策](https://news.mynavi.jp/article/osxhack-110/)
 
-# 仮想ディスプレイ
-
-* 「Ctrl + ↑」でMission Controlが開いたら、右上にある「+」で「デスクトップ X」を追加する
-* 「システム環境設定」から「キーボード」、「ショートカット」タブ、「デスクトップXへ切り替え」にチェックする
-* 「システム環境設定」から「Mission Control」、「最新の使用状況に基づいて操作スペースを自動的に並び替える」のチェックを外す
-
-# ターミナル設定
-
-* 「環境設定」から
-  * プロファイルは、Proをベースに複製する
-  * テキストはアンチエイリアス処理をチェックする
-  * フォントはMonaco 10pt
-
 ## シェル設定
 
 * ~~bashに切り替え~~
@@ -81,18 +254,6 @@ $ chsh -s /bin/bash
 $ echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ~/.bash_profile
 ```
 
-## 隠しファイルを表示する
-
-```shell
-$ defaults write com.apple.finder AppleShowAllFiles -boolean true
-```
-
-## 共有フォルダで.DS_Storeを作成しない
-
-```shell
-$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-```
-
 ## .bashrcと.bash_profileの違い
 
 * [Linux: \.bashrcと\.bash\_profileの違いを今度こそ理解する](https://techracho.bpsinc.jp/hachi8833/2019_06_06/66396)
@@ -102,27 +263,6 @@ $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 | `~/.profile`      | ログイン時にそのセッション全体に適用するものを記述する。シェルの種類に依存しないものを記述する。            | 環境変数、PATH変数 など                                         |
 | `~/.bashrc`       | bashでしか使わないものを記述する。対話モードで使うものはすべてここに書く。ここでは何も出力してはならない。 | エイリアス、シェルオプション、EDITOR変数、プロンプト設定 など |
 | `~/.bash_profile` | `~/.profile`と同じに使えるが`、bash`のみで有効。余計なものは極力書かない。右の順に読み込むだけにする。           | `~/.profile`があれば読み込む、`~/.bashrc`があれば読む               |
-
-### 隠しファイルを削除
-
-* [\.DS\_Storeや\.\_ファイルを削除したい](https://geek-memo.com/delete_exclude/)
-
-`.bashrc`に記載する。
-
-```shell
-function delgomi () {
-    find $1 \( -name '.DS_Store' -or -name '._*' -or -name 'Thumbs.db' -or -name 'Desktop.ini' \) -delete -print;
-}
-alias delgomi=delgomi
-```
-
-## Homebrew
-
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-```
-
-あとはShellで、[brewsetup.sh](https://github.com/mail2dais/pages/blob/master/brewsetup.sh)を実行する。
 
 ## starship
 
@@ -190,9 +330,7 @@ utc_time_offset = "+9"
 * ストリームレコーダー
 * [自動価格比較／ショッピング検索（Auto Price Checker）](https://chrome.google.com/webstore/detail/自動価格比較%EF%BC%8Fショッピング検索（auto-pric/hafkflejlikjnadiclapppceddoielio?hl=ja)
 
-## 英辞郎の設定
 
-* [Chromeの検索エンジンの設定を使いこなしていろんなとこから瞬間検索 \- Qiita](https://qiita.com/awakia/items/96cd2181ebbd885ff326)
 
 # Firefox
 
@@ -252,57 +390,11 @@ utc_time_offset = "+9"
 * テキスト構成くん
 * [VSCodeでPython書いてる人はとりあえずこれやっとけ〜 \- Qiita](https://qiita.com/nanato12/items/ddf26487eb30714251c3)
  
-# AppStore
-
-* [LINE](https://line.me/ja/)
-
 # それ以外
 
 * [GoPro Quick](https://gopro.com/ja/jp/shop/softwareandapp/quik-%7C%E2%80%8B-デスクトップをインストール/Quik-Desktop.html)
 
-# Git
 
-* [Mac Git 初期設定](https://qiita.com/ucan-lab/items/aadbedcacbc2ac86a2b3)
-
-```shell
-$ which git
-/usr/bin/git
-
-$ git --version
-git version 2.24.2 (Apple Git-127)
-
-# ローカルの設定
-$ git config -l 
-# グローバルの設定
-$ git config --global -l
-
-# ディレクトリ、ファイル設定
-$ mkdir ~/.ssh
-$ touch ~/.ssh/config
-$ chmod 700 ~/.ssh
-$ chmod 600 ~/.ssh/*
-
-$ vi ~/.ssh/config
-
-Host *
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
-  ServerAliveInterval 15
-  ServerAliveCountMax 30
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentitiesOnly yes
-```
-
-## global .gitignore 設定(推奨)
-
-```shell
-$ vi ~/.config/git/ignore
-```
-
-```
-.DS_Store
-```
 
 # iTunesからMusicへ
 
@@ -495,112 +587,3 @@ node node_modules/imi-enrichment-address/bin/server.js 8080
 
 グローバルパッケージを確認するには、`npm list -g --depth=0`を実行する。
 
-# Python
-
-こちらを参考にする。
-
-* [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
-* [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
-
-が、いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたい。知らんけど。
-
-```shell
-brew install anyenv
-anyenv init
-echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
-exec $SHELL -l
-anyenv install --init
-anyenv -v
-anyenv install -l
-```
-
-なんか分からないけども、anyenv-updateプラグインも導入する。
-
-```
-mkdir -p $(anyenv root)/plugins
-git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-```
-
-pyenvをインストールする。
-
-```
-anyenv install pyenv
-
-# シェルの再起動: bash
-exec $SHELL -l
-```
-
-ちゃんと動くかを確認し、2系と3系の最新版を確認し、3系の最新版を入れた上で、それを普段使用するPythonに設定する。
-
-```
-pyenv --version
-pyenv --help
-pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$'
-pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 2' | tail -n 1
-pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 3' | tail -n 1
-pyenv install 3.8.3
-pyenv versions
-pyenv global 3.8.3
-
-# pipインストールされているpypyを確認
-python -m pip list
-# 必要ならpipのアップグレード
-pip install --upgrade pip
-```
-
-ポイントは、pyenvがPythonのバージョンを変えるものだということ。
-
-どうやら、pipではなく、pipenvがポピュラーみたい。でも、個人開発なら不要かも。
-
-* [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)
-
-pipを通して入れたのはこちら。
-
-```
-pip install requests
-pip install beautifulsoup4
-
-brew install tcl-tk ghostscript # camelot の dependency.
-pip install camelot-py[cv] # tabula-pyも試したが、Javaが必要になるとのことで、やめた。
-```
-
-そのうえで、Pythonでファオルトの仮想環境ツール、venvを使うと良いみたい。
-例えば、[Open-Interpreter](https://qiita.com/yanagih/items/466a5560bd771e2b9030)を使う場合だ。
-
-* [pyenv](https://qiita.com/mogom625/items/b1b673f530a05ec6b423)
-* [venv](https://qiita.com/fiftystorm36/items/b2fd47cf32c7694adc2e)
-
-```
-cd venv
-mkdir open-interpreter
-cd open-interpreter
-
-pyenv versions
-pyenv global 3.11.0
-# must be over 3.10.0
-
-python -m venv venv
-source venv/bin/activate
-pip install open-interpreter
-
-deactivate
-pyenv global 3.8.3
-```
-
-# Jupyter
-
-```
-pip install numpy
-pip install scipy
-pip install scikit-learn
-pip install matplotlib
-pip install Pillow
-pip install jupyterlab
-pip install jupyterlab-language-pack-ja-JP
-
-
-cd 
-cd workspace
-mkdir jupyter-notebook
-jupyter notebook --notebook-dir=~/workspace/jupyter-notebook
-```
