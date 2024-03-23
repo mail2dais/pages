@@ -1,36 +1,40 @@
 # Macの初期設定
 
 参考サイト
+* [Macを買い換えた時の移行作業の方法](https://masafumiiwasaki.com/blog/macbookpro-m1max-unboxing/)
 * [Mac を買ったら必ずやっておきたい初期設定 \- Qiita](https://qiita.com/ucan-lab/items/c1a12c20c878d6fb1e21)
+
+「移行アシスタント」は使うな
 
 # 最初にやること
 
-* ソフトウェア・アップデート
-* 「システム環境設定」から
-  * 「Dock」、「最近使ったアプリケーションをDockに表示」をチェックオフ
+* 「システム設定」から
+  * 「一般」から、ソフトウェア・アップデート
+  * ~~「Dock」、「最近使ったアプリケーションをDockに表示」をチェックオフ~~
   * 「Bluetooth」、「Bluetoothをオフにする」
-  * システム設定、キーボード、キーボード・ショートカットから「修飾キー」、「Caps Lock」キーを「Control」にする
-  * 英字入力中にスペルを自動変換？
-  * 文頭を自動的に大文字にする
+  * 「キーボード」、「キーボード・ショートカット」から「修飾キー」、「Caps Lock」キーを「Control」にする
+  * ~~「キーボード」、「テキスト入力」、「入力ソース」、「編集」から、英字入力中にスペルを自動変換をオンにする~~
+  * ~~文頭を自動的に大文字にする~~
   * 「日本語 - ローマ字入力」から、「Windows風のキー操作」にして、１度の変換で済むようにする。
-  * システム設定、一般、情報、コンピュータ名を変更する　(e.g.: MacbookAir)
-  * 「Spotlight」、「検索結果」より必要なものだけに絞る
-    * Spotlightの検索候補、アプリケーション、フォルダ、計算機
+  * 「一般」、「情報」から、コンピュータ名を変更する　(e.g.: MacbookAir)
+  * 「SiriとSpotlight」、「検索結果」より必要なものだけに絞る
+    * Spotlightの検索候補、アプリケーション、フォルダ、計算機、等々
 
 # Finder
 
 「環境設定」から、
 
-* 「一般」タブから、「ハードディスク」にチェックする。「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
+* ~~「一般」タブから、「ハードディスク」にチェックする~~
+* 「新規Finderウィンドウで次を表示」するから、ホームディレクトリにする
 * 「サイドバー」タブから、「最近の項目」と「AirDrop」と「タグ」のチェックを外し、「ホームディレクトリ」にチェック、
-* 「詳細」タブから、「すべてのファイル名拡張子を表示」にチェック
+* 「詳細」タブから、「すべてのファイル名拡張子を表示」にチェックを入れる
 
 # ターミナル設定
 
 * 「環境設定」から
   * プロファイルは、Proをベースに複製する
   * テキストはアンチエイリアス処理をチェックする
-  * フォントはMonaco 10pt
+  * ~~フォントはMonaco 10pt~~
 
 ## 隠しファイルを表示する
 
@@ -310,26 +314,29 @@ utc_time_offset = "+9"
 * [ato-ichinen](https://chrome.google.com/webstore/detail/ato-ichinen/pojaolkbbklmcifckclknpolncdmbaph?hl=ja)
 * [AutoPagerize](https://chrome.google.com/webstore/detail/autopagerize/igiofjhpmpihnifddepnpngfjhkfenbp?hl=ja)
 * [Adblocker for YouTube](https://chrome.google.com/webstore/detail/adblocker-for-youtube/ldkihpcibakajmpnggbjnehoifnnpebn?hl=ja)
-* [Back to Back](https://chrome.google.com/webstore/detail/back-to-back/jegdggknidpkiahafcbphabbjcahildm?hl=ja)
+* ~~[Back to Back](https://chrome.google.com/webstore/detail/back-to-back/jegdggknidpkiahafcbphabbjcahildm?hl=ja)~~
 * [Create Link](https://chrome.google.com/webstore/detail/create-link/gcmghdmnkfdbncmnmlkkglmnnhagajbm?hl=ja)
 * Flash Video Downloader
-* [HTTPS Everywhere](https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=ja)
+* ~~[HTTPS Everywhere](https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp?hl=ja)~~
 * [Keepa - Amazon Price Tracker](https://chrome.google.com/webstore/detail/keepa-amazon-price-tracke/neebplgakaahbhdphmkckjjcegoiijjo?hl=ja)
-* [LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd?hl=ja)
+* ~~[LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd?hl=ja)~~
 * [OneClick Cleaner for Chrome](https://chrome.google.com/webstore/detail/oneclick-cleaner-for-chro/oncckmaelaecccmaniihojgeopkcajfh?hl=ja)_
-* [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?hl=ja)
+* ~~[OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?hl=ja)~~
 * [Peek-a-tab](https://chrome.google.com/webstore/detail/peek-a-tab-tabs-manager-f/nnpdamdaknpnohmlbnmgphiodghbohop?hl=ja)
 * [PrintWhatYouLike](https://chrome.google.com/webstore/detail/printwhatyoulike/npgfabafajliaooeicdoahbpoajfmbbe?hl=ja)
-* [Save to Pocket](https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=ja)
+* ~~[Save to Pocket](https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=ja)~~
 * [Simplify Gmail](https://chrome.google.com/webstore/detail/simplify-gmail/pbmlfaiicoikhdbjagjbglnbfcbcojpj?hl=ja)
 * [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)
-* Vue.js devtools
-* Wappalyzer
+* ~~Vue.js devtools~~
+* ~~Wappalyzer~~
 * [その本、図書館にあります。](https://chrome.google.com/webstore/detail/その本、図書館にあります%E3%80%82/ldidobiipljjgfaglokcehmiljadanle?hl=ja)
 * [アマゾン注文履歴フィルタ](https://chrome.google.com/webstore/detail/その本、図書館にあります%E3%80%82/ldidobiipljjgfaglokcehmiljadanle?hl=ja)
 * ストリームレコーダー
 * [自動価格比較／ショッピング検索（Auto Price Checker）](https://chrome.google.com/webstore/detail/自動価格比較%EF%BC%8Fショッピング検索（auto-pric/hafkflejlikjnadiclapppceddoielio?hl=ja)
 
+## Google Mapのアプリ化
+
+ChromeでGoogle Mapを開いたのち、「保存して共有」から「ショートカットを作成」する
 
 
 # Firefox
@@ -337,8 +344,7 @@ utc_time_offset = "+9"
 * Download Star
 * Keepa - Amazon Price Tracker
 * LastPass: Free Password Manager
-* Sea Containers
-* Simplify Gmail
+* ~~Simplify Gmail~~
 * Tampermonkey
 * Tile Pages WE
 
