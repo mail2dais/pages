@@ -69,13 +69,15 @@ alias delgomi=delgomi
 ## インストールする項目
 
 ```
-brew install pyenv amazon-chime	firefox	onyx amazon-photos		google-chrome		simple-comic app-cleaner		iina			spotify biscuit	keepassxc	tableplus brewlet	messenger	the-unarchiver coteditor	visual-studio-code dropbox			microsoft-teams	zoom duplicate-file-finder	monolingual namechanger
+brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder expressions firefox google-chrome iina keepassxc messenger microsoft-teams monolingual namechanger pyenv spotify tableplus the-unarchiver visual-studio-code zoom
 ```
+
+qfinder-pro はインストールに失敗した。
 
 # Python
 
-pyenvをインストール済みなので、Global設定していく。
-ポイントは、pyenvがPythonのバージョンを変えるものだということ。
+pyenvをインストール済みだが、.zshrc にパスを設定することを忘れずに。
+その上で、Global設定していく。ポイントは、pyenvがPythonのバージョンを変えるものだということ。
 
 ```
 pyenv --version
@@ -94,6 +96,55 @@ pip install --upgrade pip
 ```
 
 こちらを参考にする。
+
+* [poetry+pyenvでつくるお手軽開発環境](https://zenn.dev/kumamoto/articles/9f0b520020bdd0)
+* [pyenv+PoetryでのPython環境構築方法を覚えられない人（私）のための手順書](https://qiita.com/Ryku/items/512a6744bfa9903bf2dd)
+* [Pythonのパッケージ管理ツールPoetryを使用する](https://zenn.dev/kkj/articles/d14470babe1930)
+* [Poetry × JupyterLabで機械学習環境を整える](https://zenn.dev/colum2131/scraps/1bf61d61a7993e)
+
+```
+$ cd ~/workspace
+$ mkdir pp-practice
+$ cd pp-practice
+
+$ poetry init # poetryプロジェクトを作成する。PythonでCLIツールとか作るPJをやるのなら poetry new でやるのもあり。
+$ poetry env use 3.12.2 # poetryに使用するPythonバージョンを教える
+Creating virtualenv pp-practice-lzQYAj_F-py3.12 in /Users/dais/Library/Caches/pypoetry/virtualenvs
+Using virtualenv: /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
+
+$ poetry add polars # Poetryプロジェクトにライブラリを追加する
+$ poetry add jupyterlab
+$ poetry add jupyterlab-code-formatter
+$ poetry add black
+$ poetry add isort
+$ poetry run jupyter lab
+
+$ touch main.py
+$ vi main.py
+print('hello world')
+
+$ poetry shell # poetryプロジェクトの仮想環境に入るには
+pawning shell within /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
+dais@MacBook-Air-M3 pp-practice % emulate bash -c '. /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12/bin/activate'
+
+(pp-practice-py3.12) dais@MacBook-Air-M3 pp-practice % python main.py
+
+(pp-practice-py3.12) dais@MacBook-Air-M3 pp-practice % deactivate # poetryプロジェクトの仮想環境から抜ける
+
+$ poetry run python main.py # 仮想環境の外から実行する（これしか使わない予感）
+
+$ poetry new <プロジェクト名(ディレクトリ名)>
+$ cd <プロジェクト名(ディレクトリ名)>
+$ poetry add notebook
+$ code . # VSCode を開く(ピリオドに注意)
+
+$ poetry env list # 作成済み仮想環境一覧
+$ poetry env remove <vertual_env_name> # poetryプロジェクトの仮想環境の削除
+```
+
+## pyenv
+
+poetryを使うことにしたので、pyenvの設定は不要。
 
 * [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
 * [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
