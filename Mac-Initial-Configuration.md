@@ -69,7 +69,7 @@ alias delgomi=delgomi
 ## インストールする項目
 
 ```
-brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder firefox google-chrome iina keepassxc keka messenger microsoft-teams monolingual namechanger pyenv simple-comic spotify the-unarchiver visual-studio-code zoom
+brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder firefox google-chrome iina keepassxc keka messenger microsoft-teams monolingual namechanger pyenv simple-comic spotify the-unarchiver visual-studio-code xz zoom
 ```
 
 qfinder-pro はインストールに失敗した。
