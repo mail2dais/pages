@@ -117,10 +117,10 @@ Creating virtualenv pp-practice-lzQYAj_F-py3.12 in /Users/dais/Library/Caches/py
 Using virtualenv: /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
 
 $ poetry add polars # Poetryプロジェクトにライブラリを追加する
-$ poetry add jupyterlab
-$ poetry add jupyterlab-code-formatter
 $ poetry add black
 $ poetry add isort
+$ poetry add jupyterlab
+$ poetry add jupyterlab-code-formatter
 $ poetry run jupyter lab
 
 $ touch main.py
@@ -145,6 +145,23 @@ $ code . # VSCode を開く(ピリオドに注意)
 $ poetry env list # 作成済み仮想環境一覧
 $ poetry env remove <vertual_env_name> # poetryプロジェクトの仮想環境の削除
 ```
+
+Jupyter Labを立ち上げたら、SettingsからAdvanced Settings Editorを選択。
+SettingsのEdit画面が開くので、menuからJupyterlab Code Formatterを選択。
+Edit画面の左側(System Defaults)がシステム側のデフォルト設定、右側(User Preferences)がユーザーの設定になる。
+User Preferences側に以下のように記載し、デフォルトで使用したいFormatterを指定する
+
+```
+{
+    "preferences": {
+        "default_formatter": {
+            "python": ["black"],
+        }
+    }
+}
+```
+
+とはいえ、これらはVisual Studio Code上で設定すべき。
 
 ## pyenv
 
