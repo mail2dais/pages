@@ -34,7 +34,7 @@
 * 「環境設定」から
   * プロファイルは、Proをベースに複製する
   * テキストはアンチエイリアス処理をチェックする
-  * ~~フォントはMonaco 10pt~~
+  * フォントはMonaco 12pt
 
 ## 隠しファイルを表示する
 
@@ -69,7 +69,7 @@ alias delgomi=delgomi
 ## インストールする項目
 
 ```
-brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder expressions firefox google-chrome iina keepassxc messenger microsoft-teams monolingual namechanger pyenv spotify tableplus the-unarchiver visual-studio-code zoom
+brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder firefox google-chrome iina keepassxc keka messenger microsoft-teams monolingual namechanger pyenv simple-comic spotify the-unarchiver visual-studio-code zoom
 ```
 
 qfinder-pro はインストールに失敗した。
@@ -182,6 +182,7 @@ pyenv global 3.8.3
 
 jupyterlab
 jupyterlab-language-pack-ja-JP
+polars
 
 # Chrome
 
