@@ -99,6 +99,13 @@ python -m pip list
 pip install --upgrade pip
 ```
 
+よく使うライブラリは [pypi](https://pypi.org)から探すと良い。
+jupyterは、VSCodeでやることが多くなったので、不要かもしれない。
+
+```
+pip install black polars tqdm
+```
+
 こちらを参考にする。
 
 * [poetry+pyenvでつくるお手軽開発環境](https://zenn.dev/kumamoto/articles/9f0b520020bdd0)
