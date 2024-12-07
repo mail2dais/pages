@@ -295,6 +295,83 @@ $ git config --global core.quotepath false
 $ git config --global merge.conflictStyle diff3
 ```
 
+# npm
+
+* [MacにNode\.jsをインストール \- Qiita](https://qiita.com/kyosuke5_20/items/c5f68fc9d89b84c0df09)
+
+まずはnodebreをインストールする。
+
+```shell
+$ brew install nodebrew
+$ nodebrew setup
+```
+
+そのパス情報を.zshrc に追加する。
+
+次にNode.jsのインストールする。
+インストールできるバージョンを確認する。
+
+```shell
+$ nodebrew ls-remote
+
+# 最新版をインストール
+$ nodebrew install latest
+
+# 安定版をインストール
+$ nodebrew install stable
+```
+
+使用するバージョンを決める。
+
+```shell
+$ nodebrew list
+v22.11.0
+v22.12.0
+v23.2.0
+
+current: none
+
+# 必要なバージョンを有効化する
+$ nodebrew use v23.2.0
+use v23.2.0
+$ node -v
+v23.2.0
+```
+
+# 最新の .zshrc
+
+```shell
+# virtualenvでpromptを変更しない
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# prompt settings
+autoload -Uz compinit promptinit
+compinit
+promptinit
+
+# prompt coloring
+# https://h2ham.net/zsh-prompt-color/
+autoload colors
+colors
+PROMPT="%{$fg[green]%}%m%(!.#.$) %{$reset_color%}"
+PROMPT2="%{$fg[green]%}%_> %{$reset_color%}"
+SPROMPT="%{$fg[red]%}correct: %R -> %r [nyae]? %{$reset_color%}"
+RPROMPT="%{$fg[cyan]%}[%~]%{$reset_color%}"
+
+# delgomi
+# https://geek-memo.com/delete_exclude/
+function delgomi () {
+    find $1 \( -name '.DS_Store' -or -name '._*' -or -name 'Thumbs.db' -or -name 'Desktop.ini' \) -delete -print;
+}
+
+alias delgomi=delgomi
+
+# pyenv settings
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+```
 
 # 以下は過去
 
@@ -478,8 +555,7 @@ ChromeでGoogle Mapを開いたのち、「保存して共有」から「ショ�
  
 # それ以外
 
-* [GoPro Quick](https://gopro.com/ja/jp/shop/softwareandapp/quik-%7C%E2%80%8B-デスクトップをインストール/Quik-Desktop.html)
-
+~* [GoPro Quick](https://gopro.com/ja/jp/shop/softwareandapp/quik-%7C%E2%80%8B-デスクトップをインストール/Quik-Desktop.html)~
 
 
 # iTunesからMusicへ
@@ -506,43 +582,7 @@ Catalinaになって、iTunesが廃止されて、Musicになったわけだが�
 
 # vue
 
-* [MacにNode\.jsをインストール \- Qiita](https://qiita.com/kyosuke5_20/items/c5f68fc9d89b84c0df09)
-
-まずはnodebreをインストールする。
-
-```shell
-brew install nodebrew
-nodebrew -v
-```
-
-次にNode.jsのインストールする。
-インストールできるバージョンを確認する。
-
-``shell
-nodebrew ls-remote
-```
-
-が、面倒なので、安定版を入れるようと思うが、その前にディレクトリを作る。
-
-```shell
-mkdir -p ~/.nodebrew/src
-nodebrew install-binary stable
-nodebrew ls
-```
-
-インストール直後は`current: none`となっているため、必要なバージョンを有効化する。
-
-```shell
-nodebrew use v14.1.0
-```
-
-次を`.bash_profile`に追加し、sourceする。
-
-```
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-```
-
-次にvueをインストールする。
+vueをインストールする。
 
 ```shell
 npm install -g @vue/cli
