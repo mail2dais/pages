@@ -373,6 +373,14 @@ eval "$(pyenv init -)"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 ```
 
+# SQL / Database
+
+```shell
+$ brew install tableplus
+$ psql -l
+$ psql -h localhost -p 5432 -U (OSのユーザ名、dais) -d postgres
+```
+
 # 以下は過去
 
 ## LanDiskに接続する
