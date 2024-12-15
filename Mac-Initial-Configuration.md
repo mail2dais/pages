@@ -377,8 +377,89 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 ```shell
 $ brew install tableplus
+$ wc utf_ken_all.csv
+  124436  245076 18348206 utf_ken_all.csv
 $ psql -l
 $ psql -h localhost -p 5432 -U (OSのユーザ名、dais) -d postgres
+psql -h localhost -p 5432 -U dais -d postgres
+
+postgres=# CREATE TABLE zipcode_jp_stg
+(
+ local_gov_code varchar(5)
+ , zipcode_old varchar(5)
+ , zipcode varchar(7)
+ , prefecture_name_kana varchar
+ , city_name_kana varchar
+ , town_name_kana varchar
+ , prefecture_name_kanji varchar
+ , city_name_kanji varchar
+ , town_name_kanji varchar
+ , hass_multiple_zipcodes_in_town varchar(1)
+ , has_multiple_blocks_in_town varchar(1)
+ , has_streets_in_town varchar(1)
+ , is_multple_towns_per_zipcode varchar(1)
+ , update_status varchar(1)
+ , correction_reason varchar(1)
+);
+
+postgres=# \COPY zipcode_jp_stg FROM '/Users/dais/Downloads/utf_ken_all.csv' DELIMITER ',' CSV;
+COPY 124436
+
+postgres=#  SELECT COUNT(*) FROM zipcode_jp_stg;
+ count  
+--------
+ 124436
+(1 row)
+
+postgres=# SELECT
+ zipcode
+ , COUNT(*)
+FROM zipcode_jp_stg
+GROUP BY zipcode
+HAVING COUNT(*) > 1
+ORDER BY COUNT(*) DESC;
+ zipcode | count 
+---------+-------
+ 4520961 |    66
+ 4801103 |    65
+ 4410302 |    46
+ 7793405 |    44
+ 0294205 |    42
+
+postgres=# SELECT
+  MAX(LENGTH(prefecture_name_kana))
+ , MAX(LENGTH(city_name_kana))
+ , MAX(LENGTH(town_name_kana))
+ , MAX(LENGTH(prefecture_name_kanji))
+ , MAX(LENGTH(city_name_kanji))
+ , MAX(LENGTH(town_name_kanji))
+FROM zipcode_jp_stg;
+ max | max | max | max | max | max 
+-----+-----+-----+-----+-----+-----
+   6 |  19 | 302 |   4 |  10 | 297
+
+postgres=# CREATE TABLE zipcode_jp_raw
+(
+ snap_date date
+ , local_gov_code varchar(5)
+ , zipcode_old varchar(5)
+ , zipcode varchar(7)
+ , prefecture_name_kana varchar(8)
+ , city_name_kana varchar(32)
+ , town_name_kana varchar(512)
+ , prefecture_name_kanji varchar(8)
+ , city_name_kanji varchar(16)
+ , town_name_kanji varchar(512)
+ , hass_multiple_zipcodes_in_town varchar(1)
+ , has_multiple_blocks_in_town varchar(1)
+ , has_streets_in_town varchar(1)
+ , is_multple_towns_per_zipcode varchar(1)
+ , update_status varchar(1)
+ , correction_reason varchar(1)
+);
+
+postgres=# INSERT INTO zipcode_jp_raw
+SELECT '2024-11-30', * FROM zipcode_jp_stg;
 ```
 
 # 以下は過去
