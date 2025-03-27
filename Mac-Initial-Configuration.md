@@ -295,6 +295,42 @@ $ git config --global core.quotepath false
 $ git config --global merge.conflictStyle diff3
 ```
 
+## 使い方
+
+* [プルリクエストの一連の流れについて](https://qiita.com/kuuuuumiiiii/items/42d2d9ed11e3b29c22cf)
+* [【Git】一覧](https://qiita.com/sunstripe2011/items/0b611f6e8a480024dd33)
+
+```shell
+git clone https://[ホスト名またはIPアドレス]/[グループ]/[リポジトリ].git
+
+git branch -a
+git checkout -b　(branch name)
+git branch -a
+
+git status
+
+git add (updated file or directory)
+git commit -m "comment"
+# or
+git add .
+git commit -m "comment"
+# or
+git commit -a -m "comment"
+
+git push origin (branch name)
+
+# merge local master first and update remote master
+git checkout master
+git merge (branch name)
+git push origin master
+# or you go to Pull Requests page, and merge (and can delete branch on remote, too)
+git branch (branch name) --delete
+git fetch --prune # project remote status to local
+
+# confirm
+git branch -a
+```
+
 # npm
 
 * [MacにNode\.jsをインストール \- Qiita](https://qiita.com/kyosuke5_20/items/c5f68fc9d89b84c0df09)
