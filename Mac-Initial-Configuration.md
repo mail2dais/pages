@@ -69,148 +69,98 @@ alias delgomi=delgomi
 ## インストールする項目
 
 ```
-brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder firefox google-chrome iina keepassxc keka messenger microsoft-teams monolingual namechanger pyenv simple-comic spotify the-unarchiver visual-studio-code xz zoom
+brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder firefox google-chrome iina keka messenger monolingual namechanger simple-comic spotify the-unarchiver uv visual-studio-code xz zoom
 ```
 
 qfinder-pro はインストールに失敗した。
 
-# Python
+# uv
 
-pyenvをインストール済みだが、.zshrc にパスを設定することを忘れずに。
-その上で、Global設定していく。ポイントは、pyenvがPythonのバージョンを変えるものだということ。
+pyenvからuvに乗り換える。
 
-```
-pyenv --version
-pyenv --help
-pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$'
-pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 2' | tail -n 1
-pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 3' | tail -n 1
-pyenv install 3.8.3
-pyenv versions
-pyenv global 3.8.3
+* [【Python】uvの使い方を忘れたときに見るための早見表](https://zanote.net/python/how-to-use-uv/)
 
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-
-# pipインストールされているpypyを確認
-python -m pip list
-# 必要ならpipのアップグレード
-pip install --upgrade pip
-```
-
-よく使うライブラリは [pypi](https://pypi.org)から探すと良い。
-jupyterは、VSCodeでやることが多くなったので、不要かもしれない。
+アップデート
 
 ```
-pip install black polars tqdm
+uv self update
 ```
 
-こちらを参考にする。
-
-* [poetry+pyenvでつくるお手軽開発環境](https://zenn.dev/kumamoto/articles/9f0b520020bdd0)
-* [pyenv+PoetryでのPython環境構築方法を覚えられない人（私）のための手順書](https://qiita.com/Ryku/items/512a6744bfa9903bf2dd)
-* [Pythonのパッケージ管理ツールPoetryを使用する](https://zenn.dev/kkj/articles/d14470babe1930)
-* [Poetry × JupyterLabで機械学習環境を整える](https://zenn.dev/colum2131/scraps/1bf61d61a7993e)
-
+次のコマンドで、プロジェクトを使用することができる。
 ```
-$ cd ~/workspace
-$ mkdir pp-practice
-$ cd pp-practice
-
-$ poetry init # poetryプロジェクトを作成する。PythonでCLIツールとか作るPJをやるのなら poetry new でやるのもあり。
-$ poetry env use 3.12.2 # poetryに使用するPythonバージョンを教える
-Creating virtualenv pp-practice-lzQYAj_F-py3.12 in /Users/dais/Library/Caches/pypoetry/virtualenvs
-Using virtualenv: /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
-
-$ poetry add polars # Poetryプロジェクトにライブラリを追加する
-$ poetry add black
-$ poetry add isort
-$ poetry add jupyterlab
-$ poetry add jupyterlab-code-formatter
-$ poetry run jupyter lab
-
-$ touch main.py
-$ vi main.py
-print('hello world')
-
-$ poetry shell # poetryプロジェクトの仮想環境に入るには
-pawning shell within /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
-dais@MacBook-Air-M3 pp-practice % emulate bash -c '. /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12/bin/activate'
-
-(pp-practice-py3.12) dais@MacBook-Air-M3 pp-practice % python main.py
-
-(pp-practice-py3.12) dais@MacBook-Air-M3 pp-practice % deactivate # poetryプロジェクトの仮想環境から抜ける
-
-$ poetry run python main.py # 仮想環境の外から実行する（これしか使わない予感）
-
-$ poetry new <プロジェクト名(ディレクトリ名)>
-$ cd <プロジェクト名(ディレクトリ名)>
-$ poetry add notebook
-$ code . # VSCode を開く(ピリオドに注意)
-
-$ poetry env list # 作成済み仮想環境一覧
-$ poetry env remove <vertual_env_name> # poetryプロジェクトの仮想環境の削除
+cd
+cd workspace
+uv init (project-name)
+cd (project-name)
 ```
 
-Jupyter Labを立ち上げたら、SettingsからAdvanced Settings Editorを選択。
-SettingsのEdit画面が開くので、menuからJupyterlab Code Formatterを選択。
-Edit画面の左側(System Defaults)がシステム側のデフォルト設定、右側(User Preferences)がユーザーの設定になる。
-User Preferences側に以下のように記載し、デフォルトで使用したいFormatterを指定する
+プロジェクト内のファイル構成は次の通り。
+
+| ファイル名 | 内容 |
+| --- | --- |
+| .gitignore	| Gitのトラッキング対象外にするファイルを設定 |
+| .python-version	| pythonのバージョンを指定 |
+| main.py	| プロジェクトのメインファイル |
+| pyproject.toml	| プロジェクトの基本設定について記述されている |
+| README.md	| READMEファイル |
+
+仮想環境を作成する。
+カレント・ディレクトリに、`.venv`フォルダが作成される。
 
 ```
-{
-    "preferences": {
-        "default_formatter": {
-            "python": ["black"],
-        }
-    }
-}
+uv venv
 ```
 
-とはいえ、これらはVisual Studio Code上で設定すべき。
-
-## pyenv
-
-poetryを使うことにしたので、pyenvの設定は不要。
-
-* [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
-* [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
-
-いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたいだが、不要かな。
-
-他にも、pipではなく、pipenvがポピュラーみたい。でも、個人開発なら不要かも。
-
-* [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)
-
-そのうえで、Pythonでファオルトの仮想環境ツール、venvを使うと良いみたい。
-例えば、[Open-Interpreter](https://qiita.com/yanagih/items/466a5560bd771e2b9030)を使う場合だ。
-
-* [pyenv](https://qiita.com/mogom625/items/b1b673f530a05ec6b423)
-* [venv](https://qiita.com/fiftystorm36/items/b2fd47cf32c7694adc2e)
+特定のPythonバージョンで仮想環境を作成することもできる。
 
 ```
-cd venv
-mkdir open-interpreter
-cd open-interpreter
-
-pyenv versions
-pyenv global 3.11.0
-# must be over 3.10.0
-
-python -m venv venv
-source venv/bin/activate
-pip install open-interpreter
-
-deactivate
-pyenv global 3.8.3
+uv venv --python 3.10
 ```
 
-## pipでインストールするものについて
+仮想環境の有効化。
 
-jupyterlab
-jupyterlab-language-pack-ja-JP
-polars
+```
+source .venv/bin/activate
+```
+
+ただし、仮想環境を有効化せずとも、`uv run`で自動的に実行できる。
+プロジェクト中のmain.pyを実行するためには、以下のコマンドを使用する。
+
+```
+uv run main.py
+uv run python main.py
+```
+
+パッケージの追加・削除は、自動的に`pyproject.toml`へ反映される。
+
+```
+uv add numpy pandas
+uv remove numpy
+```
+
+Pythonのバージョン管理について。
+
+```
+uv python list
+uv python install 3.11
+uv python pin 3.11 # プロジェクトで使うバージョンの固定
+
+uv python uninstall 3.11
+```
+
+cliツールのインストール
+
+```
+uv tool install ruff
+uv tool list # インストール済みのツール一覧
+```
+
+cliツールを一時的に使用する（お試し）。
+
+```
+uvx (cli tool name)
+uvx pytest
+```
 
 # Chrome
 
@@ -399,7 +349,6 @@ RPROMPT="%{$fg[cyan]%}[%~]%{$reset_color%}"
 function delgomi () {
     find $1 \( -name '.DS_Store' -or -name '._*' -or -name 'Thumbs.db' -or -name 'Desktop.ini' \) -delete -print;
 }
-
 alias delgomi=delgomi
 
 # pyenv settings
@@ -407,6 +356,12 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# postgresql
+#export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+
+# mupdf
+alias poster-pdf="mutool poster -x 2 -y 2 "
 ```
 
 # SQL / Database
@@ -838,3 +793,142 @@ node node_modules/imi-enrichment-address/bin/server.js 8080
 
 グローバルパッケージを確認するには、`npm list -g --depth=0`を実行する。
 
+
+
+# Python
+
+pyenvをインストール済みだが、.zshrc にパスを設定することを忘れずに。
+その上で、Global設定していく。ポイントは、pyenvがPythonのバージョンを変えるものだということ。
+
+```
+pyenv --version
+pyenv --help
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$'
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 2' | tail -n 1
+pyenv install --list | egrep '^[ ]+[23]\.[0-9\.]+$' | grep ' 3' | tail -n 1
+pyenv install 3.8.3
+pyenv versions
+pyenv global 3.8.3
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+# pipインストールされているpypyを確認
+python -m pip list
+# 必要ならpipのアップグレード
+pip install --upgrade pip
+```
+
+よく使うライブラリは [pypi](https://pypi.org)から探すと良い。
+jupyterは、VSCodeでやることが多くなったので、不要かもしれない。
+
+```
+pip install black polars tqdm
+```
+
+こちらを参考にする。
+
+* [poetry+pyenvでつくるお手軽開発環境](https://zenn.dev/kumamoto/articles/9f0b520020bdd0)
+* [pyenv+PoetryでのPython環境構築方法を覚えられない人（私）のための手順書](https://qiita.com/Ryku/items/512a6744bfa9903bf2dd)
+* [Pythonのパッケージ管理ツールPoetryを使用する](https://zenn.dev/kkj/articles/d14470babe1930)
+* [Poetry × JupyterLabで機械学習環境を整える](https://zenn.dev/colum2131/scraps/1bf61d61a7993e)
+
+```
+$ cd ~/workspace
+$ mkdir pp-practice
+$ cd pp-practice
+
+$ poetry init # poetryプロジェクトを作成する。PythonでCLIツールとか作るPJをやるのなら poetry new でやるのもあり。
+$ poetry env use 3.12.2 # poetryに使用するPythonバージョンを教える
+Creating virtualenv pp-practice-lzQYAj_F-py3.12 in /Users/dais/Library/Caches/pypoetry/virtualenvs
+Using virtualenv: /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
+
+$ poetry add polars # Poetryプロジェクトにライブラリを追加する
+$ poetry add black
+$ poetry add isort
+$ poetry add jupyterlab
+$ poetry add jupyterlab-code-formatter
+$ poetry run jupyter lab
+
+$ touch main.py
+$ vi main.py
+print('hello world')
+
+$ poetry shell # poetryプロジェクトの仮想環境に入るには
+pawning shell within /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12
+dais@MacBook-Air-M3 pp-practice % emulate bash -c '. /Users/dais/Library/Caches/pypoetry/virtualenvs/pp-practice-lzQYAj_F-py3.12/bin/activate'
+
+(pp-practice-py3.12) dais@MacBook-Air-M3 pp-practice % python main.py
+
+(pp-practice-py3.12) dais@MacBook-Air-M3 pp-practice % deactivate # poetryプロジェクトの仮想環境から抜ける
+
+$ poetry run python main.py # 仮想環境の外から実行する（これしか使わない予感）
+
+$ poetry new <プロジェクト名(ディレクトリ名)>
+$ cd <プロジェクト名(ディレクトリ名)>
+$ poetry add notebook
+$ code . # VSCode を開く(ピリオドに注意)
+
+$ poetry env list # 作成済み仮想環境一覧
+$ poetry env remove <vertual_env_name> # poetryプロジェクトの仮想環境の削除
+```
+
+Jupyter Labを立ち上げたら、SettingsからAdvanced Settings Editorを選択。
+SettingsのEdit画面が開くので、menuからJupyterlab Code Formatterを選択。
+Edit画面の左側(System Defaults)がシステム側のデフォルト設定、右側(User Preferences)がユーザーの設定になる。
+User Preferences側に以下のように記載し、デフォルトで使用したいFormatterを指定する
+
+```
+{
+    "preferences": {
+        "default_formatter": {
+            "python": ["black"],
+        }
+    }
+}
+```
+
+とはいえ、これらはVisual Studio Code上で設定すべき。
+
+## pyenv
+
+poetryを使うことにしたので、pyenvの設定は不要。
+
+* [MacOSとHomebrewとpyenvで快適python環境を。](https://qiita.com/crankcube/items/15f06b32ec56736fc43a)
+* [よく使うPython開発環境構築(仮想環境anyenv、pyenv,pipenv)](https://qiita.com/k4ssyi/items/5ffe9bb82bd1d7b71c25)
+
+いまは[anyenv](https://github.com/anyenv/anyenv)がよりポピュラーみたいだが、不要かな。
+
+他にも、pipではなく、pipenvがポピュラーみたい。でも、個人開発なら不要かも。
+
+* [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)
+
+そのうえで、Pythonでファオルトの仮想環境ツール、venvを使うと良いみたい。
+例えば、[Open-Interpreter](https://qiita.com/yanagih/items/466a5560bd771e2b9030)を使う場合だ。
+
+* [pyenv](https://qiita.com/mogom625/items/b1b673f530a05ec6b423)
+* [venv](https://qiita.com/fiftystorm36/items/b2fd47cf32c7694adc2e)
+
+```
+cd venv
+mkdir open-interpreter
+cd open-interpreter
+
+pyenv versions
+pyenv global 3.11.0
+# must be over 3.10.0
+
+python -m venv venv
+source venv/bin/activate
+pip install open-interpreter
+
+deactivate
+pyenv global 3.8.3
+```
+
+## pipでインストールするものについて
+
+jupyterlab
+jupyterlab-language-pack-ja-JP
+polars
