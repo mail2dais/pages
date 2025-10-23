@@ -108,19 +108,19 @@ cd (project-name)
 カレント・ディレクトリに、`.venv`フォルダが作成される。
 
 ```
-uv venv
+#uv venv
 ```
 
 特定のPythonバージョンで仮想環境を作成することもできる。
 
 ```
-uv venv --python 3.10
+#uv venv --python 3.10
 ```
 
 仮想環境の有効化。
 
 ```
-source .venv/bin/activate
+#source .venv/bin/activate
 ```
 
 ただし、仮想環境を有効化せずとも、`uv run`で自動的に実行できる。
@@ -138,6 +138,19 @@ uv add numpy pandas
 uv remove numpy
 ```
 
+手動で編集した場合
+
+```
+vi pyproject.toml
+uv sync
+```
+
+依存関係を一時的に使用する場合
+
+```
+uv run --with xxx main.py
+```
+
 Pythonのバージョン管理について。
 
 ```
@@ -146,6 +159,12 @@ uv python install 3.11
 uv python pin 3.11 # プロジェクトで使うバージョンの固定
 
 uv python uninstall 3.11
+```
+
+cliツールを一時的に使う
+
+```
+uv tool run mypy
 ```
 
 cliツールのインストール
