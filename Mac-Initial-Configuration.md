@@ -154,6 +154,7 @@ uv run --with xxx main.py
 Pythonのバージョン管理について。
 
 ```
+uv python find 
 uv python list
 uv python install 3.11
 uv python pin 3.11 # プロジェクトで使うバージョンの固定
@@ -179,6 +180,13 @@ cliツールを一時的に使用する（お試し）。
 ```
 uvx (cli tool name)
 uvx pytest
+```
+
+nissagaのように本来は `pip install nissaga`のようにインストールするものについて、まずはbrewで探すが、それでも無い場合
+
+```
+brew install pipx
+pipx install nissaga
 ```
 
 # Chrome
