@@ -46,9 +46,16 @@ $ defaults write com.apple.finder AppleShowAllFiles -boolean true
 
 ```shell
 $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+$ killall Finder 
 ```
 
 ## 隠しファイルを削除
+
+* [【Mac】.DS_Storeを一括削除&作らないようにするコマンド](https://kizineko.com/delete-dsstore/)
+
+```shell
+find . -name '.DS_Store' -type f -ls -delete
+```
 
 * [\.DS\_Storeや\.\_ファイルを削除したい](https://geek-memo.com/delete_exclude/)
 
@@ -66,13 +73,42 @@ alias delgomi=delgomi
 
 * [Homebrew](https://brew.sh)
 
+**古いMacでやること**
+
+```shell
+$ brew bundle dump --global
+$ less ~/.Brewfile
+```
+
+**新しいMacでやること**
+
+```shell
+$ ls ~/.Brewfile
+$ $ brew bundle --global
+```
+
 ## インストールする項目
 
 ```
-brew install amazon-chime amazon-photos app-cleaner biscuit brewlet coteditor dropbox duplicate-file-finder firefox google-chrome iina keka messenger monolingual namechanger simple-comic spotify the-unarchiver uv visual-studio-code xz zoom
+brew install amazon-photos app-cleaner biscuit claude claude-code codex codex-app coteditor dropbox duplicate-file-finder expressions firefox gemini-cli gitleaks google-chrome graphviz iina keka kiro messenger monolingual mupdf namechanger ollama pre-commit simple-comic smoothcsv spotify sqlfmt sqruff tableplus tmux uv visual-studio-code xz whatsapp zoom
 ```
 
 qfinder-pro はインストールに失敗した。
+
+# Chrome
+
+## 英辞郎の設定
+
+* [Chromeの検索エンジンの設定を使いこなしていろんなとこから瞬間検索 \- Qiita](https://qiita.com/awakia/items/96cd2181ebbd885ff326)
+
+* 検索エンジン名：ALC
+* キーワード：alc 
+* http://eow.alc.co.jp/search?q=%s
+
+
+# AppStore
+
+* [LINE](https://line.me/ja/)
 
 # uv
 
@@ -86,7 +122,41 @@ pyenvからuvに乗り換える。
 uv self update
 ```
 
+cliツールを一時的に使う
+
+```
+uv tool run mypy
+```
+
+cliツールのインストール
+
+```
+uv tool install "shandy-sqlfmt[jinjafmt]"
+uv tool list # インストール済みのツール一覧
+```
+
+cliツールを一時的に使用する（お試し）。
+
+```
+uvx (cli tool name)
+uvx pytest
+```
+
+nissagaのように本来は `pip install nissaga`のようにインストールするものについて、まずはbrewで探すが、それでも無い場合
+
+```
+brew install pipx
+pipx install nissaga
+```
+
+依存関係を一時的に使用して、Pythonスクリプトを実行する
+
+```
+uvx run --with xxx main.py
+```
+
 次のコマンドで、プロジェクトを使用することができる。
+
 ```
 cd
 cd workspace
@@ -162,48 +232,6 @@ uv python pin 3.11 # プロジェクトで使うバージョンの固定
 uv python uninstall 3.11
 ```
 
-cliツールを一時的に使う
-
-```
-uv tool run mypy
-```
-
-cliツールのインストール
-
-```
-uv tool install ruff
-uv tool list # インストール済みのツール一覧
-```
-
-cliツールを一時的に使用する（お試し）。
-
-```
-uvx (cli tool name)
-uvx pytest
-```
-
-nissagaのように本来は `pip install nissaga`のようにインストールするものについて、まずはbrewで探すが、それでも無い場合
-
-```
-brew install pipx
-pipx install nissaga
-```
-
-# Chrome
-
-## 英辞郎の設定
-
-* [Chromeの検索エンジンの設定を使いこなしていろんなとこから瞬間検索 \- Qiita](https://qiita.com/awakia/items/96cd2181ebbd885ff326)
-
-* 検索エンジン名：ALC
-* キーワード：alc 
-* http://eow.alc.co.jp/search?q=%s
-
-
-# AppStore
-
-* [LINE](https://line.me/ja/)
-
 # Git
 
 * [Mac Git 初期設定](https://qiita.com/ucan-lab/items/aadbedcacbc2ac86a2b3)
@@ -276,6 +304,7 @@ $ git config --global merge.conflictStyle diff3
 
 * [プルリクエストの一連の流れについて](https://qiita.com/kuuuuumiiiii/items/42d2d9ed11e3b29c22cf)
 * [【Git】一覧](https://qiita.com/sunstripe2011/items/0b611f6e8a480024dd33)
+* [Semantic Commit Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
 
 ```shell
 git clone https://[ホスト名またはIPアドレス]/[グループ]/[リポジトリ].git
@@ -376,19 +405,64 @@ RPROMPT="%{$fg[cyan]%}[%~]%{$reset_color%}"
 function delgomi () {
     find $1 \( -name '.DS_Store' -or -name '._*' -or -name 'Thumbs.db' -or -name 'Desktop.ini' \) -delete -print;
 }
-alias delgomi=delgomi
+#alias delgomi=delgomi
+
+# pip upgrade all
+# https://qiita.com/kazushisan/items/183bdeaddf9629a2f21d
+#alias pip-upgrade-all="pip list -o | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
 
 # pyenv settings
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+#export PYENV_ROOT="$HOME/.pyenv"
+#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+#export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # postgresql
-#export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@18/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@18/include"
 
 # mupdf
 alias poster-pdf="mutool poster -x 2 -y 2 "
+
+# uv
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dais/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# sqlfix
+function sqlfix () {
+    sqlfmt "$@"
+    sqlfluff fix --quiet --ignore parsing "$@"
+}
+
+# kiro
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Ollama / Anthropic
+export ANTHROPIC_AUTH_TOKEN="ollama"
+export ANTHROPIC_API_KEY="" # 重要：空にする
+export ANTHROPIC_BASE_URL="http://localhost:11434"
+alias claude-q2="claude --model qwen2.5-coder:7b"
+alias claude-q3="claude --model qwen3.6:27b" 
+alias claude-g="claude --model gemma4:26b"
+
+# bun completions
+[ -s "/Users/dais/.bun/_bun" ] && source "/Users/dais/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias claude-mem='/Users/dais/.bun/bin/bun "/Users/dais/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+# Added by Antigravity
+export PATH="/Users/dais/.antigravity/antigravity/bin:$PATH"
+
 ```
 
 # SQL / Database
